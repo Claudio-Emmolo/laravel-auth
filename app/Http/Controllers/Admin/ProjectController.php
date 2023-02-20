@@ -4,10 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use Dotenv\Validator;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+
+    public $validator = [
+        "title" => "required|unique|string|max:100",
+        "url" => "required|url",
+        "date" => "required|date",
+        "preview_img" => "nullable|url",
+        "difficulty" => "required|numeric|between:1,10",
+        "tecnologies" => "required|string|max:255",
+    ];
+
+    public $errorMessage = [];
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +50,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->validate($this->validator);
 
         $newProject = new Project();
         $newProject->fill($data);
