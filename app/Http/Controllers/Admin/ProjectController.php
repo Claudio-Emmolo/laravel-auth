@@ -37,7 +37,6 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -46,9 +45,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        var_dump('ciao');
+        return view('admin.project.show', compact('project'));
     }
 
     /**
