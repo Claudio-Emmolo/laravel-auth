@@ -13,7 +13,7 @@
         <th scope="col">Difficulty</th>
         <th scope="col">Tecnologies</th>
         <th>
-            <a href="#" class="btn btn-primary">New Project</a>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">+ New Project</a>
         </th>
       </tr>
     </thead>
