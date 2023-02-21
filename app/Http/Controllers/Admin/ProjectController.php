@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Dotenv\Validator;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
 
     public $validator = [
-        "title" => "required|unique|string|max:100",
+        "title" => "required|unique:Projects|string|min:1|max:100",
         "url" => "required|url",
         "date" => "required|date",
         "preview_img" => "nullable|url",
@@ -39,7 +40,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.project.create');
+        return view('admin.project.create', ["project" => new Project()]);
     }
 
     /**
@@ -62,7 +63,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Project $project
      * @return \Illuminate\Http\Response
      */
     public function show(Project $project)
@@ -73,12 +74,12 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Project $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.project.edit', compact('project'));
     }
 
     /**
@@ -88,9 +89,17 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $rules = $this->validator;
+        $rules['title'] = ['required', 'unique:Projects', 'string', 'min:1', 'max:100', Rule::unique('Projects', 'title')->ignore($project->id)];
+
+        $editData = $request->validate($rules);
+
+        // $project = Project::findOrFail($project->id);
+        $project->update($editData);
+
+        return redirect()->route('admin.projects.show', compact('project'));
     }
 
     /**

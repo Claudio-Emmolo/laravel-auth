@@ -27,7 +27,7 @@
             <td>{{$project->tecnologies}}</td>
             <td>
                 <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary">Show</a>
-                <a href="#" class="btn btn-success">Edit</a>
+                <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-success">Edit</a>
             </td>
         @empty
             <td>
