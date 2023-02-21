@@ -4,6 +4,10 @@
 
 @section('main-app')
 
+@if (session('message'))
+    <div id="alert_popUp" class="d-none" data-type="{{ session('type') }}" data-message="{{ session('message') }}"></div>
+@endif
+
 <table class="table container mt-5">
     <thead>
       <tr>

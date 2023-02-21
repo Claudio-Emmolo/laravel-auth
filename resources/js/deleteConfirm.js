@@ -27,3 +27,18 @@ form.forEach((formDelete) => {
     });
 
 });
+
+
+// Edit AND Destroy POPUP
+const elementAlert = document.getElementById('alert_popUp')
+
+if (elementAlert) {
+    Swal.fire({
+        toast: true,
+        position: 'top-end',
+        icon: elementAlert.dataset.type,
+        title: elementAlert.dataset.message,
+        showConfirmButton: false,
+        timer: 1500
+    })
+}

@@ -98,7 +98,7 @@ class ProjectController extends Controller
 
         $project->update($editData);
 
-        return redirect()->route('admin.projects.show', compact('project'));
+        return redirect()->route('admin.projects.index', compact('project'))->with('message', 'Project has been modified')->with('type', 'success');
     }
 
     /**
@@ -110,6 +110,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', 'Project has been delete')->with('type', 'warning');
     }
 }
