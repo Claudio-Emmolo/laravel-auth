@@ -13,4 +13,9 @@ class ProjectController extends Controller
         $projectList = Project::all();
         return view('user.project.index', compact('projectList'));
     }
+
+    public function show(Project $project)
+    {
+        return view('user.project.show', compact('project'));
+    }
 }

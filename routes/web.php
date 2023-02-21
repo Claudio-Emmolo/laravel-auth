@@ -18,7 +18,10 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 |
 */
 
-Route::get('/', [UserProjectController::class, 'index'])->name('user.home');
+Route::prefix('/')->group(function () {
+    Route::resource('projects', UserProjectController::class);
+});
+
 
 
 Route::get('/dashboard', function () {
