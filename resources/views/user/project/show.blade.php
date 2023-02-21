@@ -4,7 +4,7 @@
 
 @section('content')
 
-{{-- <a href="{{route('user.project.index')}}" class="btn btn-dark m-5"><i class="fa-solid fa-hand-point-left"></i></a> --}}
+<a href="{{url('/projects')}}" class="btn btn-dark m-5"><i class="fa-solid fa-hand-point-left"></i></a>
 <div class="card-project text-center">
   <img src="{{$project->preview_img}}" alt="{{$project->title}}" class="img-fluid mb-3">
   <h2>
