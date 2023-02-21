@@ -12,7 +12,7 @@
         <th scope="col">Date</th>
         <th scope="col">Difficulty</th>
         <th scope="col">Tecnologies</th>
-        <th>
+        <th class="text-end">
             <a href="{{ route('admin.projects.create') }}" class="btn btn-primary"><i class="fa-regular fa-square-plus"></i> New Project</a>
         </th>
       </tr>
@@ -29,7 +29,7 @@
             <td>{{$project->date}}</td>
             <td>{{$project->difficulty}}</td>
             <td>{{$project->tecnologies}}</td>
-            <td>
+            <td class="text-end">
                 <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
                 <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
                 <form action="{{route('admin.projects.destroy', $project->id)}}" method="POST" class="form-delete d-inline" tag="{{$project->title}}">
