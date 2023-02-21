@@ -28,7 +28,7 @@
             <td>
                 <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary">Show</a>
                 <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-success">Edit</a>
-                <form action="{{route('admin.projects.destroy', $project->id)}}" method="POST" class="d-inline">
+                <form action="{{route('admin.projects.destroy', $project->id)}}" method="POST" class="form-delete d-inline" tag="{{$project->title}}">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger">Delete</button>
@@ -44,6 +44,8 @@
   </table>
 
 
+@endsection
 
-
+@section('script')
+@vite(['resources/js/deleteConfirm.js'])
 @endsection

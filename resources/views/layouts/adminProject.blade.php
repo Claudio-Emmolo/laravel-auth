@@ -17,12 +17,15 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+
+    <!-- SweetAlert -->
+    <link href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
     <div id="app">
-
-
+        
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
@@ -90,6 +93,8 @@
             @yield('main-app')
         </main>
     </div>
+
+    @yield('script')
 </body>
 
 </html>
