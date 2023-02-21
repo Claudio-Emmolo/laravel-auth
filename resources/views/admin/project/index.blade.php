@@ -46,7 +46,10 @@
         @endforelse
     </tbody>
   </table>
-
+  <div class="container">
+    {{ $projectList->links() }}
+  </div>
+  
 
 @endsection
 
