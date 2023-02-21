@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController as ProjectController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\ProjectController as UserProjectController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
@@ -17,9 +18,8 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [UserProjectController::class, 'index'])->name('user.home');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
