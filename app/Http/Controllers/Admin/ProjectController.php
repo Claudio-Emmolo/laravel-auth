@@ -92,7 +92,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $rules = $this->validator;
-        $rules['title'] = ['required', 'unique:Projects', 'string', 'min:1', 'max:100', Rule::unique('Projects', 'title')->ignore($project->id)];
+        $rules['title'] = ['required', 'string', 'min:1', 'max:100', Rule::unique('projects')->ignore($project->id)];
 
         $editData = $request->validate($rules);
 

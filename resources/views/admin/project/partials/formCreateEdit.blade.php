@@ -24,7 +24,7 @@
 
     <div class="mb-3">
         <label for="date" class="form-label">Project Date*</label>
-        <input type="datetime-local" class="form-control" id="date" name="date" value="{{ old('date', $project->date) }}">
+        <input type="date" class="form-control" id="date" name="date" value="{{ old('date', $project->date) }}">
         <div class="text-danger">
             @error('date')
             {{ $message }}
