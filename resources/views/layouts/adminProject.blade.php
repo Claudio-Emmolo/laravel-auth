@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yiel('title', 'Laravel') </title>
+    <title>@yield('title', 'Projects') </title>
 
 
     <!-- Fonts -->

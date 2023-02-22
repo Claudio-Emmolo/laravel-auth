@@ -1,6 +1,6 @@
 @extends('layouts.adminProject')
 
-@section('title', 'Edit')
+@section('title', "Edit - $project->title")
 
 @section('main-app')
 <h1 class="fw-bold my-5 text-center">Edit project</h1>

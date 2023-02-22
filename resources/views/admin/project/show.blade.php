@@ -1,6 +1,6 @@
 @extends('layouts.adminProject')
 
-@section('title', 'Project Show')
+@section('title', "Project - $project->title")
 
 @section('main-app')
 
