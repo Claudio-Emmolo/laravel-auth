@@ -12,7 +12,7 @@ class ProjectController extends Controller
 {
 
     public $validator = [
-        "title" => "required|unique:Projects|string|min:1|max:100",
+        "title" => "required|unique:Projects|string|min:2|max:100",
         "url" => "required|url",
         "date" => "required|date",
         "preview_img" => "nullable|url",
@@ -20,7 +20,35 @@ class ProjectController extends Controller
         "tecnologies" => "required|string|max:255",
     ];
 
-    public $errorMessage = [];
+    public $errorMessage = [
+        "title.required" => 'Inserire un titolo',
+        "title.unique" => 'Il titolo è già stato usato! Inserisci un titolo diverso',
+        "title.string" => 'Il campo deve contenere una stringa',
+        "title.min" => 'Inserisci almeno due caratteri',
+        "title.max" => 'Limite di carettiri superato (100)',
+
+
+
+        "url.required" => 'Inserire un URL',
+        "url.url" => 'URL non valido',
+
+
+        "date.required" => 'Inserire una data',
+        "date.date" => 'Data non valida o scritta non correttamente',
+
+        "preview_img.url" => 'URL non valido',
+
+        "difficulty.required" => 'Inserire la difficoltà dell\'esercizio',
+        "difficulty.numeric" => 'Il campo può contenere sono numeri',
+        "difficulty.between" => 'Il numero deve essere compreso tra 1 e 10',
+
+
+
+        "tecnologies.required" => 'Inserire la lista di tecnologie usate',
+        "tecnologies.string" => 'Il campo deve contenere una stringa',
+        "tecnologies.string.max" => 'Limite di carettiri superato (255)',
+
+    ];
 
     /**
      * Display a listing of the resource.
@@ -51,7 +79,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate($this->validator);
+        $data = $request->validate($this->validator, $this->errorMessage);
 
         $newProject = new Project();
         $newProject->fill($data);
@@ -94,7 +122,7 @@ class ProjectController extends Controller
         $rules = $this->validator;
         $rules['title'] = ['required', 'string', 'min:1', 'max:100', Rule::unique('projects')->ignore($project->id)];
 
-        $editData = $request->validate($rules);
+        $editData = $request->validate($rules, $this->errorMessage);
 
         $project->update($editData);
 
