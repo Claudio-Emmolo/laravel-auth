@@ -16,7 +16,7 @@ class ProjectController extends Controller
         "url" => "required|url",
         "date" => "required|date",
         "preview_img" => "nullable|url",
-        "difficulty" => "required|numeric|between:1,10",
+        "difficulty" => "required|numeric|between:1,5",
         "tecnologies" => "required|string|max:255",
     ];
 
@@ -40,7 +40,7 @@ class ProjectController extends Controller
 
         "difficulty.required" => 'Inserire la difficoltà dell\'esercizio',
         "difficulty.numeric" => 'Il campo può contenere sono numeri',
-        "difficulty.between" => 'Il numero deve essere compreso tra 1 e 10',
+        "difficulty.between" => 'Il numero deve essere compreso tra 1 e 5',
 
 
 
@@ -57,9 +57,7 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $order = $request->order;
-        $projectList = Project::orderBy($order, 'desc')->paginate(8);
-        // $projectList = $projectCall->paginate(8);
+        $projectList = Project::orderBy('date', 'desc')->paginate(8);
 
         $trashCount = Project::onlyTrashed()->count();
         return view('admin.project.index', compact('projectList', 'trashCount'));

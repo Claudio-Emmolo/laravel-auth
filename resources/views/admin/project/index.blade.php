@@ -8,24 +8,13 @@
     <div id="alert_popUp" class="d-none" data-type="{{ session('type') }}" data-message="{{ session('message') }}"></div>
 @endif
 
-<table class="table container mt-5">
-    <thead>
+<table class="table container mt-5 table-hover table-bordered">
+    <thead class="text-center">
       <tr>
-        <th scope="col">
-          <a href="{{route('admin.projects.index', "order=title")}}" class="text-decoration-none">
-          Title
-            <i class="fa-solid fa-arrow-up-a-z"></i>
-          </a>
-        </th>
+        <th scope="col">Title</th>
         <th scope="col">URL</th>
-        <th scope="col">
-          <a href="{{route('admin.projects.index', "order=date")}}" class="text-decoration-none">
-            Date
-            <i class="fa-solid fa-arrow-up-9-1"></i>
-          </a>
-        </th>
+        <th scope="col">Date</th>
         <th scope="col">Difficulty</th>
-        <th scope="col">Tecnologies</th>
         <th class="text-end">
           @if ($trashCount > 0)
             <a href="{{route('admin.trash')}}" class="btn btn-dark">
@@ -42,14 +31,20 @@
         @forelse ($projectList as $project)
       <tr>
             <td>{{$project->title}}</td>
-            <td>
+            <td class="text-center">
               <a href=" {{$project->url}}" class="btn btn-light">
                 <i class="fs-4 fa-brands fa-github"></i>
               </a>
             </td>
             <td>{{$project->date}}</td>
-            <td>{{$project->difficulty}}</td>
-            <td>{{$project->tecnologies}}</td>
+            <td>
+              @for ($i = 0; $i < $project->difficulty; $i++)
+              <i class="text-warning fa-solid fa-star"></i> 
+              @endfor
+              <span>
+                ({{$project->difficulty}})
+              </span>
+            </td>
             <td class="text-end">
                 <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
                 <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>

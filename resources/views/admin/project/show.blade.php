@@ -7,7 +7,11 @@
 <a href="{{route('admin.projects.index')}}" class="btn btn-dark m-5"><i class="fa-solid fa-hand-point-left"></i></a>
 
 <div class="card-project text-center">
-  <img src="{{$project->preview_img}}" alt="{{$project->title}}" class="img-fluid mb-3">
+  @if($project->preview_img != null)
+  <img src="{{$project->preview_img}}" alt="{{$project->title}}" class="img-fluid mb-2">
+  @else
+  <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" alt{{$project->title}}" class="img-fluid mb-2">
+  @endif  
   <h2>
     Titolo: {{$project->title}}
   </h2>

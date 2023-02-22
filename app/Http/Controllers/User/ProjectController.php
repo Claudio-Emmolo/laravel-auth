@@ -10,7 +10,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projectList = Project::all();
+        $projectList = Project::orderBy('date', 'desc')->get();
         return view('user.project.index', compact('projectList'));
     }
 

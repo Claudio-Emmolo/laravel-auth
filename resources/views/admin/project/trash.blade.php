@@ -18,7 +18,6 @@
         <th scope="col">URL</th>
         <th scope="col">Date</th>
         <th scope="col">Difficulty</th>
-        <th scope="col">Tecnologies</th>
         <th class="text-end">
           Functions
         </th>
@@ -35,7 +34,6 @@
             </td>
             <td>{{$project->date}}</td>
             <td>{{$project->difficulty}}</td>
-            <td>{{$project->tecnologies}}</td>
             <td class="text-end">
                 <a href="{{route('admin.restore', $project->id)}}" class="btn btn-success"><i class="fa-solid fa-rotate-left"></i></a>
                 <form action="{{route('admin.forceDelete', $project->id)}}" method="POST" class="form-delete d-inline" tag="{{$project->title}}">
