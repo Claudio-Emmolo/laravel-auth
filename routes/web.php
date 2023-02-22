@@ -38,6 +38,10 @@ Route::middleware(['auth', 'verified'])
         Route::get('/dashboard', [DashboardController::class, 'index'])
             ->name('dashboard');
 
+        Route::get('/trash', [ProjectController::class, 'trash'])->name('trash');
+        Route::get('/trash/{project}/restore', [ProjectController::class, 'restore'])->name('restore');
+
+
         Route::resource('/projects', ProjectController::class);
     });
 

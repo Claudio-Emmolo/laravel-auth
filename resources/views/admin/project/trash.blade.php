@@ -1,6 +1,6 @@
 @extends('layouts.adminProject')
 
-@section('title', 'Project Index')
+@section('title', 'Trash')
 
 @section('main-app')
 
@@ -17,12 +17,7 @@
         <th scope="col">Difficulty</th>
         <th scope="col">Tecnologies</th>
         <th class="text-end">
-            <a href="{{route('admin.trash')}}" class="btn btn-dark">
-              <span>x0</span>
-              <i class="fa-regular fa-trash-can"></i>
-            </a>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary"><i class="fa-regular fa-square-plus"></i> New Project</a>
-
+          Functions
         </th>
       </tr>
     </thead>
@@ -39,8 +34,7 @@
             <td>{{$project->difficulty}}</td>
             <td>{{$project->tecnologies}}</td>
             <td class="text-end">
-                <a href="{{route('admin.projects.show', $project->id)}}" class="btn btn-primary"><i class="fa-solid fa-eye"></i></a>
-                <a href="{{route('admin.projects.edit', $project->id)}}" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{{route('admin.restore', $project->id)}}" class="btn btn-success"><i class="fa-solid fa-rotate-left"></i></a>
                 <form action="{{route('admin.projects.destroy', $project->id)}}" method="POST" class="form-delete d-inline" tag="{{$project->title}}">
                   @csrf
                   @method('DELETE')
@@ -49,15 +43,15 @@
             </td>
         @empty
             <td>
-                <p>Nulla da mostrare</p>
+                <p>Nesun elemento nel cestino</p>
             </td>
         </tr>
         @endforelse
     </tbody>
   </table>
-  <div class="container">
+  {{-- <div class="container">
     {{ $projectList->links() }}
-  </div>
+  </div> --}}
   
 
 @endsection

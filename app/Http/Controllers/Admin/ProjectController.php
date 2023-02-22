@@ -140,4 +140,25 @@ class ProjectController extends Controller
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', 'Project has been delete')->with('type', 'warning');
     }
+
+    // Trash Route
+
+    public function trash()
+    {
+        $projectList = Project::onlyTrashed()->get();
+        return view('admin.project.trash', compact('projectList'));
+    }
+
+
+    /**
+     * Returns the restored item
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        Project::where('id', $id)->withTrashed()->restore();
+        return redirect()->route('admin.projects.index')->with('message', 'Project has been restored')->with('type', 'success');
+    }
 }
