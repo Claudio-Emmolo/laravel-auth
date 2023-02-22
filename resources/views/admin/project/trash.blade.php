@@ -4,6 +4,9 @@
 
 @section('main-app')
 
+<a href="{{route('admin.projects.index')}}" class="btn btn-dark m-5"><i class="fa-solid fa-hand-point-left"></i></a>
+
+
 @if (session('message'))
     <div id="alert_popUp" class="d-none" data-type="{{ session('type') }}" data-message="{{ session('message') }}"></div>
 @endif
@@ -35,7 +38,7 @@
             <td>{{$project->tecnologies}}</td>
             <td class="text-end">
                 <a href="{{route('admin.restore', $project->id)}}" class="btn btn-success"><i class="fa-solid fa-rotate-left"></i></a>
-                <form action="{{route('admin.projects.destroy', $project->id)}}" method="POST" class="form-delete d-inline" tag="{{$project->title}}">
+                <form action="{{route('admin.forceDelete', $project->id)}}" method="POST" class="form-delete d-inline" tag="{{$project->title}}">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
@@ -43,7 +46,7 @@
             </td>
         @empty
             <td>
-                <p>Nesun elemento nel cestino</p>
+                <p>No items in trash</p>
             </td>
         </tr>
         @endforelse

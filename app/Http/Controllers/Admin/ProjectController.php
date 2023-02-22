@@ -161,4 +161,17 @@ class ProjectController extends Controller
         Project::where('id', $id)->withTrashed()->restore();
         return redirect()->route('admin.projects.index')->with('message', 'Project has been restored')->with('type', 'success');
     }
+
+
+    /**
+     * Returns the restored item
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function forceDelete($id)
+    {
+        Project::where('id', $id)->withTrashed()->forceDelete();
+        return redirect()->route('admin.projects.index')->with('message', 'Project has been permanently deleted')->with('type', 'warning');
+    }
 }

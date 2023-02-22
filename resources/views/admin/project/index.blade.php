@@ -49,7 +49,7 @@
             </td>
         @empty
             <td>
-                <p>Nulla da mostrare</p>
+                <p>No items to show</p>
             </td>
         </tr>
         @endforelse
