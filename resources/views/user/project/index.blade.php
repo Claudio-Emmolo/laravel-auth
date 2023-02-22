@@ -33,5 +33,23 @@
                 </div>
             @endforeach
         </div>
+
+        <div class="scoll-pagination d-flex align-items-center justify-content-center mb-5">
+            {{-- Previus Page --}}
+            <a href="{{ $projectList->previousPageUrl() }}" class="text-decoration-none">
+                <i class="fs-1 fa-solid fa-chevron-left"></i>
+            </a>
+
+            <span class="fs-1 fw-bold mx-5">
+                {{ $projectList->currentPage() }}
+            </span>
+
+            {{-- Next Page --}}
+            <a href="{{ $projectList->nextPageUrl() }}">
+                <i class="fs-1 fa-solid fa-chevron-right" class="text-decoration-none"></i>
+            </a>
+        </div>
+
+
     </div>
 @endsection
