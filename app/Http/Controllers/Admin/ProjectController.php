@@ -59,7 +59,7 @@ class ProjectController extends Controller
     {
         $sort = $request->sort;
 
-        $projectCall = Project::paginate(8);
+        $projectCall = Project::orderBy($sort, 'asc')->paginate(8);
         $projectList = $projectCall->sortBy($sort);
 
         $trashCount = Project::onlyTrashed()->count();
