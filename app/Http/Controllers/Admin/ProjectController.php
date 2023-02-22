@@ -57,13 +57,12 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-        $sort = $request->sort;
-
-        $projectCall = Project::orderBy($sort, 'asc')->paginate(8);
-        $projectList = $projectCall->sortBy($sort);
+        $order = $request->order;
+        $projectList = Project::orderBy($order, 'desc')->paginate(8);
+        // $projectList = $projectCall->paginate(8);
 
         $trashCount = Project::onlyTrashed()->count();
-        return view('admin.project.index', compact('projectCall', 'projectList', 'trashCount'));
+        return view('admin.project.index', compact('projectList', 'trashCount'));
     }
 
     /**

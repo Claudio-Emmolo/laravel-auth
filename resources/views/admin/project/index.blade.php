@@ -12,14 +12,14 @@
     <thead>
       <tr>
         <th scope="col">
-          <a href="{{route('admin.projects.index', "sort=title")}}" class="text-decoration-none">
+          <a href="{{route('admin.projects.index', "order=title")}}" class="text-decoration-none">
           Title
             <i class="fa-solid fa-arrow-up-a-z"></i>
           </a>
         </th>
         <th scope="col">URL</th>
         <th scope="col">
-          <a href="{{route('admin.projects.index', "sort=date")}}" class="text-decoration-none">
+          <a href="{{route('admin.projects.index', "order=date")}}" class="text-decoration-none">
             Date
             <i class="fa-solid fa-arrow-up-9-1"></i>
           </a>
@@ -68,7 +68,7 @@
     </tbody>
   </table>
   <div class="container">
-    {{ $projectCall->links() }}
+    {{ $projectList->links() }}
   </div>
   
 
