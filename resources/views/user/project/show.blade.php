@@ -20,7 +20,8 @@
                 <h2>
                     Titolo: {{ $project->title }}
                 </h2>
-                <a href="{{ $project->url }}" class="btn btn-light"><i class="fs-1 fa-brands fa-github"></i></a>
+                <a href="{{ $project->url }}" target="_blank" class="btn btn-light"><i
+                        class="fs-1 fa-brands fa-github"></i></a>
                 <p>
                     Data: {{ $project->date }}<br>
                     Livello difficoltà:
