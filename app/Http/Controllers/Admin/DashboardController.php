@@ -10,6 +10,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $projectCount = Project::all()->count();
+        $trashCount = Project::onlyTrashed()->count();
+        $lastProject = Project::all()->last();
+
+        return view('admin.dashboard', compact('projectCount', 'trashCount', 'lastProject'));
     }
 }
