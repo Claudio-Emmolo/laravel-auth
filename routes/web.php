@@ -19,6 +19,8 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 */
 
 Route::prefix('/')->group(function () {
+    Route::get('/', [UserProjectController::class, 'index']);
+
     Route::resource('projects', UserProjectController::class);
 });
 
