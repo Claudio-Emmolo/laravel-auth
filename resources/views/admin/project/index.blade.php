@@ -11,9 +11,17 @@
 <table class="table container mt-5">
     <thead>
       <tr>
-        <th scope="col">Title</th>
+        <th scope="col">
+          <a href="{{route('admin.projects.index', "sort=title")}}">
+            Title
+          </a>
+        </th>
         <th scope="col">URL</th>
-        <th scope="col">Date</th>
+        <th scope="col">
+          <a href="{{route('admin.projects.index', "sort=data")}}" id="dateChange">
+            Date
+          </a>
+        </th>
         <th scope="col">Difficulty</th>
         <th scope="col">Tecnologies</th>
         <th class="text-end">
@@ -58,7 +66,7 @@
     </tbody>
   </table>
   <div class="container">
-    {{ $projectList->links() }}
+    {{ $projectCall->links() }}
   </div>
   
 
