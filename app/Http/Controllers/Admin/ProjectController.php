@@ -58,7 +58,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projectList = Project::paginate(8);
-        return view('admin.project.index', compact('projectList'));
+
+        $trashCount = Project::onlyTrashed()->count();
+        return view('admin.project.index', compact('projectList', 'trashCount'));
     }
 
     /**

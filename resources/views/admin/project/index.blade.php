@@ -17,10 +17,12 @@
         <th scope="col">Difficulty</th>
         <th scope="col">Tecnologies</th>
         <th class="text-end">
+          @if ($trashCount > 0)
             <a href="{{route('admin.trash')}}" class="btn btn-dark">
-              <span>x0</span>
+              <span>x{{$trashCount}}</span>
               <i class="fa-regular fa-trash-can"></i>
             </a>
+          @endif
             <a href="{{ route('admin.projects.create') }}" class="btn btn-primary"><i class="fa-regular fa-square-plus"></i> New Project</a>
 
         </th>
