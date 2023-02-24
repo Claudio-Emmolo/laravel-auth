@@ -17,17 +17,17 @@ class ProjectsTableSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        $my_project = [
-            [
-                "title" => '',
-                "url" => '',
-                "date" => '20/10/2020',
-                "preview_img" => null,
-                "difficulty" => '',
-                "tecnologies" => ''
-            ],
+        // $my_project = [ //Todo - add my project
+        //     [
+        //         "title" => '',
+        //         "url" => '',
+        //         "date" => '20/10/2020',
+        //         "preview_img" => null,
+        //         "difficulty" => '',
+        //         "tecnologies" => ''
+        //     ],
 
-        ];
+        // ];
 
         for ($i = 0; $i < 50; $i++) {
             $newProject = new Project();
