@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="row justify-content-center mt-5">
-                    <div class="col-4 single-repo position-relative">
+                    <div class="col-4 single-repo position-relative text-center">
                         <h4 class="text-uppercase fw-bold text-primary text-center">CARD</h4>
 
                         {{-- GitHub Link --}}
@@ -107,8 +107,8 @@
                                 <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" @endif
                                 alt{{ $lastProject->title }}"
                                 class="img-fluid w-75 mb-2">
-                                <span class="fs-4">{{ $lastProject->title }}</span>
                         </div>
+                        <span class="fs-4">{{ $lastProject->title }}</span>
                     </div>
                 </div>
 
