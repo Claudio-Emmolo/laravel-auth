@@ -40,7 +40,7 @@ Route::middleware(['auth', 'verified'])
 
         Route::get('/trash', [ProjectController::class, 'trash'])->name('trash');
         Route::get('/trash/{project}/restore', [ProjectController::class, 'restore'])->name('restore');
-        Route::delete('/trash/{project}/force-delete', [ProjectController::class, 'forceDelete'])->name('forceDelete');
+        Route::delete('/trash/{project}/force-delete', [ProjectController::class, 'forceDelete'])->name('forceDelete')->withTrashed();
 
 
         Route::resource('/projects', ProjectController::class);
