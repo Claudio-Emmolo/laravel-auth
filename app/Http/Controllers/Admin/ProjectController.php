@@ -86,6 +86,8 @@ class ProjectController extends Controller
 
         $newProject = new Project();
         $newProject->fill($data);
+
+        //Upload IMG
         $newProject->preview_img = Storage::put('uploads', $data['preview_img']);
 
         $newProject->save();
@@ -128,6 +130,9 @@ class ProjectController extends Controller
         $rules['title'] = ['required', 'string', 'min:1', 'max:100', Rule::unique('projects')->ignore($project->id)];
 
         $editData = $request->validate($rules, $this->errorMessage);
+
+        //Upload IMG
+        $editData['preview_img'] = Storage::put('uploads', $editData['preview_img']);
 
         $project->update($editData);
 
@@ -177,6 +182,7 @@ class ProjectController extends Controller
     public function forceDelete($id)
     {
         Project::where('id', $id)->withTrashed()->forceDelete();
+        // Storage::delete();
         return redirect()->route('admin.projects.index')->with('message', 'Project has been permanently deleted')->with('type', 'warning');
     }
 }
