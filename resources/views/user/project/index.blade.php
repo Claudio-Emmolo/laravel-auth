@@ -19,15 +19,19 @@
 
                     <a href="{{ route('projects.show', $project->id) }}" class="text-decoration-none">
                         <div class="p-2 home-card h-100">
+                            {{-- Img Controls --}}
                             @if ($project->preview_img != null)
-                                <img src="{{ $project->preview_img }}" alt="{{ $project->title }}" class="img-fluid mb-2">
-                            @else
-                                <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" alt{{ $project->title }}"
-                                    class="img-fluid w-100 mb-2">
-                            @endif
-                            <div class="row">
-                                <h3 class="text-dark">{{ $project->title }}</h3>
-                            </div>
+                                @if (!$project->isImageUrl())
+                                <img src="{{ asset('storage/' . $project->preview_img) }}" @else <img
+                                        src="{{ $project->preview_img }}" @endif
+                                @else
+                                    <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" @endif
+                                    alt{{ $project->title }}"
+                                    class="img-fluid w-100 h-75 mb-2">
+
+                                    <div class="row">
+                                        <h3 class="text-dark">{{ $project->title }}</h3>
+                                    </div>
                         </div>
                     </a>
                 </div>

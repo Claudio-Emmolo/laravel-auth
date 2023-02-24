@@ -147,6 +147,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        //Check if IMG or URL
+        if ($project->isImageUrl()) {
+            Storage::delete($project->preview_img);
+        }
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', 'Project has been delete')->with('type', 'warning');
     }
@@ -182,7 +186,6 @@ class ProjectController extends Controller
     public function forceDelete($id)
     {
         Project::where('id', $id)->withTrashed()->forceDelete();
-        // Storage::delete();
         return redirect()->route('admin.projects.index')->with('message', 'Project has been permanently deleted')->with('type', 'warning');
     }
 }

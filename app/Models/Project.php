@@ -12,4 +12,9 @@ class Project extends Model
     use SoftDeletes;
 
     protected $fillable = array('title', 'url', 'date', 'preview_img', 'difficulty', 'tecnologies');
+
+    public function isImageUrl()
+    {
+        return filter_var($this->preview_img, FILTER_VALIDATE_URL);
+    }
 }
