@@ -7,6 +7,7 @@ use App\Models\Project;
 use Dotenv\Validator;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -15,7 +16,7 @@ class ProjectController extends Controller
         "title" => "required|unique:Projects|string|min:2|max:100",
         "url" => "required|url",
         "date" => "required|date",
-        "preview_img" => "nullable|url",
+        "preview_img" => "nullable",
         "difficulty" => "required|numeric|between:1,5",
         "tecnologies" => "required|string|max:255",
     ];
@@ -85,6 +86,8 @@ class ProjectController extends Controller
 
         $newProject = new Project();
         $newProject->fill($data);
+        $newProject->preview_img = Storage::put('uploads', $data['preview_img']);
+
         $newProject->save();
 
         return redirect()->route('admin.projects.index', compact('newProject'));

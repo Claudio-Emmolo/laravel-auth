@@ -10,7 +10,8 @@
         <div class="row">
             <div class="col-6 text-center border">
                 @if ($project->preview_img != null)
-                    <img src="{{ $project->preview_img }}" alt="{{ $project->title }}" class="img-fluid mb-2">
+                    <img src="{{ asset('storage/' . $project->preview_img) }}" alt="{{ $project->title }}"
+                        class="img-fluid mb-2">
                 @else
                     <img src="{{ Vite::asset('resources/img/no-img-available.jpg') }}" alt{{ $project->title }}"
                         class="img-fluid w-75 mb-2">
