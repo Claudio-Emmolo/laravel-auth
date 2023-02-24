@@ -131,6 +131,14 @@ class ProjectController extends Controller
 
         $editData = $request->validate($rules, $this->errorMessage);
 
+        //remove exist img
+        if ($request->hasFile('preview_img')) {
+            //Check if IMG or URL
+            if (!$project->isImageUrl()) {
+                Storage::delete($project->preview_img);
+            }
+        };
+
         //Upload IMG
         $editData['preview_img'] = Storage::put('uploads', $editData['preview_img']);
 
@@ -149,6 +157,7 @@ class ProjectController extends Controller
     {
         //Check if IMG or URL
         if ($project->isImageUrl()) {
+            // Delete Img
             Storage::delete($project->preview_img);
         }
         $project->delete();
